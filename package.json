@@ -1,11 +1,13 @@
 {
-  "name": "new",
+  "name": "point",
   "version": "1.0.0",
+  "private": true,
+  "main": "public/Main.js",
   "description": "",
   "keywords": [],
-  "main": "src/index.js",
   "dependencies": {
     "antd": "3.14.1",
+    "electron": "4.1.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-highlight-words": "latest",
@@ -13,12 +15,20 @@
     "react-scripts": "2.0.3",
     "redux": "4.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "electron": "^4.0.6"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron-start": "electron ."
   },
-  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
