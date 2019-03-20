@@ -1,0 +1,30 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  .trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    transition: color 0.3s;
+    vertical-align: text-bottom;
+    background-color: #002140;
+  }
+  
+  .trigger:hover {
+    color: #1890ff;
+  }
+  
+  .logo {
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px;
+  }
+  
+  .left {
+    text-align: left;
+  }
+  
