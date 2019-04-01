@@ -1,0 +1,17 @@
+.CartList {
+  text-align: left;
+  background: white;
+  padding: 10px;
+}
+.right {
+  text-align: right;
+}
+.ticket {
+  background: white;
+  padding: 10px;
+  height: 100%;
+}
+
+.ant-tag {
+  margin-bottom: 3px;
+}

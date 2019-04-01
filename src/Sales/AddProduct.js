@@ -21,7 +21,9 @@ class AddProductForm extends React.Component {
     autoCompleteResult: [],
     linea: "",
     color: "",
-    claves: []
+    corrida: "",
+    clave: "",
+    claves: ["VANS1234", "CNV432"]
   };
 
   handleSubmit = e => {
@@ -31,6 +33,12 @@ class AddProductForm extends React.Component {
         this.props.addProductToTable(values);
       }
     });
+  };
+
+  handleCleanFields = () => {
+    console.log(this.state);
+    this.setState({ familia: "" });
+    console.log(this.state);
   };
 
   handleConfirmBlur = e => {
@@ -52,7 +60,15 @@ class AddProductForm extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { linea, color, claves } = this.state;
+    const {
+      linea,
+      corrida,
+      clave,
+      color,
+      familia,
+      claves,
+      descripcion
+    } = this.state;
 
     const formItemLayout = {
       labelCol: {
@@ -98,7 +114,7 @@ class AddProductForm extends React.Component {
                   dataSource={claves}
                   onChange={this.handleClaveChange}
                 >
-                  <Input />
+                  <Input value={clave} />
                 </AutoComplete>
               )}
             </Form.Item>
@@ -119,8 +135,8 @@ class AddProductForm extends React.Component {
                   //style={{ width: "32%" }}
                   onChange={this.handleLineaChange}
                 >
-                  <Option value="rmb">RMB</Option>
-                  <Option value="dollar">Dollar</Option>
+                  <Option value="dama">Dama</Option>
+                  <Option value="Bebe">Bebe</Option>
                 </Select>
               )}
             </Form.Item>
@@ -138,7 +154,7 @@ class AddProductForm extends React.Component {
                 ]
               })(
                 <Select
-                  value={color}
+                  value={corrida}
                   //size={size}
                   onChange={this.handleLineaChange}
                 >
@@ -182,7 +198,7 @@ class AddProductForm extends React.Component {
                     whitespace: true
                   }
                 ]
-              })(<Input />)}
+              })(<Input value={familia} />)}
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -243,7 +259,7 @@ class AddProductForm extends React.Component {
                     message: "Por favor ingresa una descripcion"
                   }
                 ]
-              })(<Input />)}
+              })(<Input value={descripcion} />)}
             </Form.Item>
           </Col>
         </Row>
@@ -257,7 +273,7 @@ class AddProductForm extends React.Component {
           </Col>
           <Col span={12}>
             <Form.Item>
-              <Button block type="danger">
+              <Button block type="danger" onClick={this.handleCleanFields}>
                 Limpiar campos
               </Button>
             </Form.Item>

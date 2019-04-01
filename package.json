@@ -10,6 +10,7 @@
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-highlight-words": "latest",
+    "react-infinite-scroller": "1.2.4",
     "react-redux": "6.0.1",
     "react-scripts": "2.0.3",
     "redux": "4.0.1"
@@ -24,5 +25,10 @@
     "eject": "react-scripts eject",
     "electron-start": "electron ."
   },
-  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

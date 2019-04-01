@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Divider } from "antd";
 
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 
@@ -28,10 +28,10 @@ class Header extends React.Component {
       "Domingo",
       "Lunes",
       "Martes",
-      "Miercoles",
+      "Miércoles",
       "Jueves",
       "Viernes",
-      "Sabado"
+      "Sábado"
     ];
     const date = new Date();
     const today =
@@ -70,7 +70,7 @@ class Header extends React.Component {
         </Row>
         <Row className="background-blue">
           <Col span={6}>
-            <h3>{today} </h3>
+            <h3>{today}</h3>
           </Col>
           <Col span={6}>
             <h3>1</h3>
