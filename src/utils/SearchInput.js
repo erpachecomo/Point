@@ -46,6 +46,7 @@ class SearchInput extends React.Component {
         filterOption={false}
         onSearch={this.handleSearch}
         onChange={this.handleChange}
+        //try with onclick
         notFoundContent={null}
       >
         {options}

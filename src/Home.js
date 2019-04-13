@@ -5,10 +5,12 @@ import Inventory from "./inventory/Inventory";
 import Sales from "./Sales/Sales";
 import SalesHeader from "./Sales/Header";
 import Users from "./Users/Users";
+import ComponentDemo from "./Firebase/ComponentDemo";
 
 import "./styles.css";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 import SubMenu from "antd/lib/menu/SubMenu";
+import Products from "./inventory/Products";
 
 const { Header, Sider, Content } = Layout;
 
@@ -24,19 +26,26 @@ class Home extends React.Component {
       collapsed: !this.state.collapsed
     });
   };
-
+  getContent = selected => {
+    console.log(selected);
+    switch (selected) {
+      case "Ventas":
+        return <Sales />;
+      case "Usuarios":
+        return <Users />;
+      case "Facturación":
+        return <ComponentDemo />;
+      case "Inventario de Articulos":
+        return <Products />;
+      case "Usuarios":
+        return <Users />;
+      default:
+        return <Inventory />;
+    }
+  };
   render() {
     const { selected } = this.state;
-    const content =
-      selected === "Ventas" ? (
-        <Sales />
-      ) : selected === "Usuarios" ? (
-        <Users />
-      ) : selected === "Facturación" ? (
-        <Users />
-      ) : (
-        <Inventory />
-      );
+    const content = this.getContent(selected);
     return (
       <Layout
         ref={node => {

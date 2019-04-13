@@ -7,12 +7,15 @@
   "keywords": [],
   "dependencies": {
     "antd": "3.14.1",
+    "firebase": "5.9.3",
+    "less-loader": "4.1.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-highlight-words": "latest",
     "react-infinite-scroller": "1.2.4",
     "react-redux": "6.0.1",
     "react-scripts": "2.0.3",
+    "react-to-print": "2.0.0-alpha.7",
     "redux": "4.0.1"
   },
   "devDependencies": {

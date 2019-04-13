@@ -84,92 +84,106 @@ class EditableCell extends React.Component {
 class EditableTable extends React.Component {
   constructor(props) {
     super(props);
+    const { dataSource, columns } = props;
     this.state = {
-      data,
+      data: dataSource && dataSource.length > 0 ? dataSource : [],
       editingKey: "",
       searchText: "",
       filteredInfo: null,
       sortedInfo: null
     };
 
-    this.columns = [
-      {
-        title: "Nombre de producto",
-        dataIndex: "nombre",
-        width: "25%",
-        editable: true,
-        ...this.getColumnSearchProps("nombre")
-      },
-      {
-        title: "Cantidad",
-        dataIndex: "cantidad",
-        width: "15%",
-        editable: true
-      },
-      {
-        title: "Descripcion",
-        dataIndex: "descripcion",
-        width: "40%",
-        editable: true,
-        ...this.getColumnSearchProps("descripcion")
-      },
-      {
-        title: "Acciones",
-        dataIndex: "acciones",
-        render: (text, record) => {
-          const editable = this.isEditing(record);
-          return (
-            <div>
-              {editable ? (
-                <span>
-                  <EditableContext.Consumer>
-                    {form => (
-                      <Button
-                        shape="circle"
-                        icon="check"
-                        ghost
-                        type="primary"
-                        onClick={() => this.save(form, record.key)}
-                      />
+    this.columns =
+      columns && columns.length > 0
+        ? columns
+        : [
+            {
+              title: "Nombre de producto",
+              dataIndex: "nombre",
+              width: "25%",
+              editable: true,
+              ...this.getColumnSearchProps("nombre")
+            },
+            {
+              title: "Cantidad",
+              dataIndex: "cantidad",
+              width: "15%",
+              editable: true
+            },
+            {
+              title: "Descripcion",
+              dataIndex: "descripcion",
+              width: "40%",
+              editable: true,
+              ...this.getColumnSearchProps("descripcion")
+            },
+            {
+              title: "Acciones",
+              dataIndex: "acciones",
+              render: (text, record) => {
+                const editable = this.isEditing(record);
+                return (
+                  <div>
+                    {editable ? (
+                      <span>
+                        <EditableContext.Consumer>
+                          {form => (
+                            <Button
+                              shape="circle"
+                              icon="check"
+                              ghost
+                              type="primary"
+                              onClick={() => this.save(form, record.key)}
+                            />
+                          )}
+                        </EditableContext.Consumer>
+                        <Divider type="vertical" />
+                        <Popconfirm
+                          title="Estas seguro que quieres cancelar?"
+                          onConfirm={() => this.cancel(record.key)}
+                          placement="topRight"
+                          okText="Si, cancelar"
+                          cancelText="No, seguir editando"
+                        >
+                          <Button
+                            type="danger"
+                            shape="circle"
+                            icon="close"
+                            ghost
+                          />
+                        </Popconfirm>
+                      </span>
+                    ) : (
+                      <div className="icons-list">
+                        <Button
+                          type="primary"
+                          shape="circle"
+                          icon="edit"
+                          ghost
+                          onClick={() => this.edit(record.key)}
+                        />
+                        <Divider type="vertical" />
+                        <Popconfirm
+                          title="Estas seguro que quieres eliminar este producto?"
+                          onConfirm={() => this.delete(record.key)}
+                          placement="topRight"
+                          okText="Si, eliminar"
+                          cancelText="No, cancelar"
+                        >
+                          <Button
+                            type="danger"
+                            shape="circle"
+                            icon="delete"
+                            ghost
+                          />
+                        </Popconfirm>
+                      </div>
                     )}
-                  </EditableContext.Consumer>
-                  <Divider type="vertical" />
-                  <Popconfirm
-                    title="Estas seguro que quieres cancelar?"
-                    onConfirm={() => this.cancel(record.key)}
-                    placement="topRight"
-                    okText="Si, cancelar"
-                    cancelText="No, seguir editando"
-                  >
-                    <Button type="danger" shape="circle" icon="close" ghost />
-                  </Popconfirm>
-                </span>
-              ) : (
-                <div className="icons-list">
-                  <Button
-                    type="primary"
-                    shape="circle"
-                    icon="edit"
-                    ghost
-                    onClick={() => this.edit(record.key)}
-                  />
-                  <Divider type="vertical" />
-                  <Popconfirm
-                    title="Estas seguro que quieres eliminar este producto?"
-                    onConfirm={() => this.delete(record.key)}
-                    placement="topRight"
-                    okText="Si, eliminar"
-                    cancelText="No, cancelar"
-                  >
-                    <Button type="danger" shape="circle" icon="delete" ghost />
-                  </Popconfirm>
-                </div>
-              )}
-            </div>
-          );
-        }
-      }
-    ];
+                  </div>
+                );
+              }
+            }
+          ];
   }
   isEditing = record => record.key === this.state.editingKey;
   getColumnSearchProps = dataIndex => ({
@@ -304,7 +318,9 @@ class EditableTable extends React.Component {
       <Table
         components={components}
         bordered
-        dataSource={this.state.data}
+        //style={{ width: "100%" }}
+        scroll={this.props.scroll}
+        dataSource={this.props.dataSource}
         columns={columns}
         rowClassName="editable-row"
       />

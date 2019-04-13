@@ -20,7 +20,9 @@
 
 .logo {
   height: 32px;
-  background: rgba(255, 255, 255, 0.2);
+  background-image: url("https://scontent.fgdl5-1.fna.fbcdn.net/v/t1.0-9/46101468_281926645792675_7052267919857680384_n.png?_nc_cat=101&_nc_ht=scontent.fgdl5-1.fna&oh=8d72ffbf42224b137aa0af8b88701819&oe=5D41109A");
+  max-width: 100%;
+  max-height: 100%;
   margin: 16px;
 }
 

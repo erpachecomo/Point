@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col, Divider } from "antd";
 
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
+import { today } from "../utils/Datetime";
 
 class Header extends React.Component {
   constructor() {
@@ -10,39 +11,6 @@ class Header extends React.Component {
   }
 
   render() {
-    const months = [
-      "Enero",
-      "Febrero",
-      "Marzo",
-      "Abril",
-      "Mayo",
-      "Junio",
-      "Julio",
-      "Agosto",
-      "Septiembre",
-      "Octubre",
-      "Noviembre",
-      "Diciembre"
-    ];
-    const weekdays = [
-      "Domingo",
-      "Lunes",
-      "Martes",
-      "Miércoles",
-      "Jueves",
-      "Viernes",
-      "Sábado"
-    ];
-    const date = new Date();
-    const today =
-      weekdays[date.getDay()] +
-      ", " +
-      date.getDate() +
-      " de " +
-      months[date.getMonth()] +
-      " del " +
-      date.getFullYear();
-
     return (
       <div>
         <Row className="background-blue">
